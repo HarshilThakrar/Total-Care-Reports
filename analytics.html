@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Analytics Dashboard - Total Care Reports</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .analytics-dashboard {
+            padding: 20px;
+            background: #f8fafc;
+            min-height: 100vh;
+        }
+        
+        .dashboard-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .visitors-table {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .table-header {
+            background: #1e3a8a;
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+        }
+        
+        .table-content {
+            padding: 1rem;
+        }
+        
+        .visitor-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 1rem;
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+            align-items: center;
+        }
+        
+        .visitor-row:last-child {
+            border-bottom: none;
+        }
+        
+        .visitor-row:hover {
+            background: #f8fafc;
+        }
+        
+        .visitor-info {
+            font-size: 0.9rem;
+        }
+        
+        .visitor-time {
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+        
+        .visitor-location {
+            color: #1e3a8a;
+            font-weight: 500;
+        }
+        
+        .visitor-device {
+            color: #059669;
+            font-weight: 500;
+        }
+        
+        .visitor-page {
+            color: #7c3aed;
+            font-weight: 500;
+        }
+        
+        .refresh-btn {
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .refresh-btn:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="analytics-dashboard">
+        <div class="dashboard-header">
+            <h1>Website Analytics Dashboard</h1>
+            <p>Real-time visitor tracking and website performance metrics</p>
+            <button class="refresh-btn" onclick="loadAnalytics()">Refresh Data</button>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalVisitors">0</div>
+                <div class="stat-label">Total Visitors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="uniqueVisitors">0</div>
+                <div class="stat-label">Unique Visitors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pageViews">0</div>
+                <div class="stat-label">Page Views</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="avgTimeOnSite">0s</div>
+                <div class="stat-label">Avg. Time on Site</div>
+            </div>
+        </div>
+        
+        <div class="visitors-table">
+            <div class="table-header">
+                <h3>Recent Visitors</h3>
+            </div>
+            <div class="table-content">
+                <div class="visitor-row" style="font-weight: 600; background: #f8fafc;">
+                    <div>Time</div>
+                    <div>Location</div>
+                    <div>Device</div>
+                    <div>Page</div>
+                    <div>Duration</div>
+                </div>
+                <div id="visitorsList">
+                    <!-- Visitor data will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Mock data for demonstration
+        const mockVisitors = [
+            {
+                time: '2024-01-15 14:30:25',
+                location: 'London, UK',
+                device: 'Desktop',
+                page: '/',
+                duration: '2m 45s'
+            },
+            {
+                time: '2024-01-15 14:28:10',
+                location: 'Manchester, UK',
+                device: 'Mobile',
+                page: '/services',
+                duration: '1m 20s'
+            },
+            {
+                time: '2024-01-15 14:25:33',
+                location: 'Birmingham, UK',
+                device: 'Tablet',
+                page: '/about',
+                duration: '3m 15s'
+            },
+            {
+                time: '2024-01-15 14:22:18',
+                location: 'Glasgow, UK',
+                device: 'Desktop',
+                page: '/contact',
+                duration: '4m 30s'
+            },
+            {
+                time: '2024-01-15 14:20:05',
+                location: 'Leeds, UK',
+                device: 'Mobile',
+                page: '/',
+                duration: '1m 50s'
+            }
+        ];
+        
+        function loadAnalytics() {
+            // Update stats
+            document.getElementById('totalVisitors').textContent = '127';
+            document.getElementById('uniqueVisitors').textContent = '89';
+            document.getElementById('pageViews').textContent = '342';
+            document.getElementById('avgTimeOnSite').textContent = '2m 15s';
+            
+            // Update visitors list
+            const visitorsList = document.getElementById('visitorsList');
+            visitorsList.innerHTML = '';
+            
+            mockVisitors.forEach(visitor => {
+                const visitorRow = document.createElement('div');
+                visitorRow.className = 'visitor-row';
+                visitorRow.innerHTML = `
+                    <div class="visitor-time">${visitor.time}</div>
+                    <div class="visitor-location">${visitor.location}</div>
+                    <div class="visitor-device">${visitor.device}</div>
+                    <div class="visitor-page">${visitor.page}</div>
+                    <div class="visitor-info">${visitor.duration}</div>
+                `;
+                visitorsList.appendChild(visitorRow);
+            });
+        }
+        
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', loadAnalytics);
+        
+        // Auto-refresh every 30 seconds
+        setInterval(loadAnalytics, 30000);
+    </script>
+</body>
+</html>

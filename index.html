@@ -4,11 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Total Care Reports - Medico-Legal Reporting Services UK</title>
+    
+    <!-- Code Protection Meta Tags -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="no-referrer">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-50ZW5YN06E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-50ZW5YN06E');
+    </script>
+    
+    <!-- Custom Analytics -->
+    <script>
+        // Custom visitor tracking
+        function trackVisitor() {
+            const visitorData = {
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                language: navigator.language,
+                platform: navigator.platform,
+                screenResolution: screen.width + 'x' + screen.height,
+                colorDepth: screen.colorDepth,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                referrer: document.referrer,
+                url: window.location.href,
+                sessionId: generateSessionId()
+            };
+            
+            // Send to your analytics endpoint
+            fetch('/api/analytics', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(visitorData)
+            }).catch(err => console.log('Analytics error:', err));
+        }
+        
+        function generateSessionId() {
+            return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        }
+        
+        // Track page views
+        function trackPageView() {
+            const pageData = {
+                page: window.location.pathname,
+                title: document.title,
+                timestamp: new Date().toISOString(),
+                sessionId: generateSessionId()
+            };
+            
+            fetch('/api/pageview', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(pageData)
+            }).catch(err => console.log('Page view tracking error:', err));
+        }
+        
+        // Track button clicks
+        function trackClick(element, action) {
+            const clickData = {
+                element: element,
+                action: action,
+                timestamp: new Date().toISOString(),
+                page: window.location.pathname
+            };
+            
+            fetch('/api/click', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(clickData)
+            }).catch(err => console.log('Click tracking error:', err));
+        }
+        
+        // Initialize tracking
+        document.addEventListener('DOMContentLoaded', function() {
+            trackVisitor();
+            trackPageView();
+            
+            // Track all button clicks
+            document.querySelectorAll('button, .btn, a').forEach(element => {
+                element.addEventListener('click', function() {
+                    trackClick(this.className || this.tagName, 'click');
+                });
+            });
+        });
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Code Protection -->
+    <script>
+        // Disable right click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable F12 and other dev tools
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.key === 's')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Disable text selection
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    </script>
 </head>
 <body> 
     <!-- Custom Cursor -->

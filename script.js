@@ -59,6 +59,180 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Code Protection - Anti Copy
+document.addEventListener('keydown', function(e) {
+    // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S, Ctrl+A
+    if (e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+        (e.ctrlKey && e.key === 'u') ||
+        (e.ctrlKey && e.key === 's') ||
+        (e.ctrlKey && e.key === 'a')) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Disable right click
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// Disable text selection
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// Disable drag
+document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// Advanced Analytics Tracking
+class WebsiteAnalytics {
+    constructor() {
+        this.sessionId = this.generateSessionId();
+        this.startTime = Date.now();
+        this.pageViews = 0;
+        this.clicks = 0;
+        this.scrollDepth = 0;
+        this.init();
+    }
+    
+    generateSessionId() {
+        return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    }
+    
+    init() {
+        this.trackPageLoad();
+        this.trackScrollDepth();
+        this.trackTimeOnPage();
+        this.trackMouseMovement();
+        this.trackFormInteractions();
+        this.trackExitIntent();
+    }
+    
+    trackPageLoad() {
+        const loadData = {
+            type: 'page_load',
+            timestamp: new Date().toISOString(),
+            sessionId: this.sessionId,
+            url: window.location.href,
+            referrer: document.referrer,
+            userAgent: navigator.userAgent,
+            screenResolution: screen.width + 'x' + screen.height,
+            viewportSize: window.innerWidth + 'x' + window.innerHeight,
+            language: navigator.language,
+            platform: navigator.platform,
+            cookieEnabled: navigator.cookieEnabled,
+            onlineStatus: navigator.onLine
+        };
+        
+        this.sendData('/api/analytics', loadData);
+    }
+    
+    trackScrollDepth() {
+        let maxScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            if (scrollPercent > maxScroll) {
+                maxScroll = scrollPercent;
+                this.scrollDepth = maxScroll;
+                
+                const scrollData = {
+                    type: 'scroll_depth',
+                    timestamp: new Date().toISOString(),
+                    sessionId: this.sessionId,
+                    scrollPercent: scrollPercent,
+                    page: window.location.pathname
+                };
+                
+                this.sendData('/api/analytics', scrollData);
+            }
+        });
+    }
+    
+    trackTimeOnPage() {
+        setInterval(() => {
+            const timeData = {
+                type: 'time_on_page',
+                timestamp: new Date().toISOString(),
+                sessionId: this.sessionId,
+                timeSpent: Math.round((Date.now() - this.startTime) / 1000),
+                page: window.location.pathname
+            };
+            
+            this.sendData('/api/analytics', timeData);
+        }, 30000); // Every 30 seconds
+    }
+    
+    trackMouseMovement() {
+        let mouseMovements = 0;
+        document.addEventListener('mousemove', () => {
+            mouseMovements++;
+            if (mouseMovements % 50 === 0) { // Track every 50 movements
+                const mouseData = {
+                    type: 'mouse_movement',
+                    timestamp: new Date().toISOString(),
+                    sessionId: this.sessionId,
+                    movements: mouseMovements,
+                    page: window.location.pathname
+                };
+                
+                this.sendData('/api/analytics', mouseData);
+            }
+        });
+    }
+    
+    trackFormInteractions() {
+        document.querySelectorAll('input, textarea, select').forEach(element => {
+            element.addEventListener('focus', () => {
+                const formData = {
+                    type: 'form_interaction',
+                    timestamp: new Date().toISOString(),
+                    sessionId: this.sessionId,
+                    action: 'focus',
+                    element: element.tagName,
+                    page: window.location.pathname
+                };
+                
+                this.sendData('/api/analytics', formData);
+            });
+        });
+    }
+    
+    trackExitIntent() {
+        document.addEventListener('mouseleave', (e) => {
+            if (e.clientY <= 0) {
+                const exitData = {
+                    type: 'exit_intent',
+                    timestamp: new Date().toISOString(),
+                    sessionId: this.sessionId,
+                    timeOnPage: Math.round((Date.now() - this.startTime) / 1000),
+                    page: window.location.pathname
+                };
+                
+                this.sendData('/api/analytics', exitData);
+            }
+        });
+    }
+    
+    sendData(endpoint, data) {
+        fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        }).catch(err => console.log('Analytics error:', err));
+    }
+}
+
+// Initialize analytics
+const analytics = new WebsiteAnalytics();
+
 // Scroll animations
 const observerOptions = {
     threshold: 0.1,
