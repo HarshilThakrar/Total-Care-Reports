@@ -150,6 +150,13 @@ body {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 30%, #3b82f6 70%, #60a5fa 100%);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
+    /* Background Image */
+    background-image: 
+        linear-gradient(rgba(30, 58, 138, 0.7), rgba(37, 99, 235, 0.6)),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="medical" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/><path d="M40,40 L60,40 L60,60 L40,60 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/><circle cx="50" cy="50" r="15" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/><path d="M35,50 L65,50 M50,35 L50,65" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="800" fill="url(%23medical)"/><g opacity="0.3"><path d="M100,200 Q300,100 500,200 T900,200" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/><path d="M150,400 Q350,300 550,400 T950,400" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/><path d="M200,600 Q400,500 600,600 T1000,600" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/></g><g opacity="0.4"><circle cx="200" cy="150" r="3" fill="rgba(255,255,255,0.3)"/><circle cx="400" cy="250" r="3" fill="rgba(255,255,255,0.3)"/><circle cx="600" cy="350" r="3" fill="rgba(255,255,255,0.3)"/><circle cx="800" cy="450" r="3" fill="rgba(255,255,255,0.3)"/><circle cx="1000" cy="550" r="3" fill="rgba(255,255,255,0.3)"/></g></svg>');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 @keyframes gradientShift {
@@ -164,14 +171,21 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(0.5px);
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     text-align: center;
     color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .hero-title {
