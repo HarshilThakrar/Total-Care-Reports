@@ -1771,6 +1771,91 @@ nav.navbar.force-sticky {
     will-change: transform !important;
 }
 
+/* SEO Content Section */
+.seo-content {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.seo-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.seo-text h2 {
+    font-size: 2.5rem;
+    color: #1e40af;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.seo-text h3 {
+    font-size: 1.8rem;
+    color: #334155;
+    margin: 30px 0 20px 0;
+    font-weight: 600;
+}
+
+.seo-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 20px;
+}
+
+.seo-text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.seo-text li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    line-height: 1.6;
+    color: #475569;
+}
+
+.seo-text li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #1e40af;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.seo-keywords h3 {
+    font-size: 1.5rem;
+    color: #1e40af;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.keyword-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.keyword-tag {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.keyword-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hamburger {
@@ -1834,6 +1919,19 @@ nav.navbar.force-sticky {
 
     .contact-content {
         grid-template-columns: 1fr;
+    }
+
+    .seo-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .seo-text h2 {
+        font-size: 2rem;
+    }
+
+    .seo-text h3 {
+        font-size: 1.5rem;
     }
 
     .stats-container {
