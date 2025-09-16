@@ -1226,37 +1226,70 @@ body {
 
 .specialization-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
     margin-top: 3rem;
 }
 
 .specialization-item {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
     text-align: center;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(30, 58, 138, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     transform: translateY(50px);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.specialization-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #1e3a8a, #2563eb, #3b82f6);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
 .specialization-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(30, 58, 138, 0.2);
+    border-color: #2563eb;
+}
+
+.specialization-item:hover::before {
+    transform: scaleX(1);
 }
 
 .specialization-item i {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #1e3a8a;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.specialization-item:hover i {
+    color: #2563eb;
+    transform: scale(1.1);
 }
 
 .specialization-item span {
-    font-weight: 600;
-    color: #334155;
-    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.specialization-item:hover span {
+    color: #1e3a8a;
 }
 
 /* Contact Page Styles */
