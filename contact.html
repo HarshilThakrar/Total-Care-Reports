@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Total Care Reports | Medico-Legal Reporting Services UK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><h2>Total Care Reports</h2></a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="contact-hero-content animate-on-scroll">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our team for expert medico-legal reporting services</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-details-card animate-on-scroll">
+                    <h2>Get in Touch</h2>
+                    <p>Ready to work with us? Contact our team for a consultation or to request a report. We're here to help with all your medico-legal reporting needs.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="method-content">
+                                <h3>Phone</h3>
+                                <p>+44 20 7946 0958</p>
+                                <span>Mon-Fri: 9:00 AM - 6:00 PM</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-content">
+                                <h3>Email</h3>
+                                <p>info@totalcarereports.co.uk</p>
+                                <span>We respond within 2 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-content">
+                                <h3>Address</h3>
+                                <p>123 Medical Street<br>London, EC1A 4HD<br>United Kingdom</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="method-content">
+                                <h3>Office Hours</h3>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                <p>Saturday: 10:00 AM - 2:00 PM</p>
+                                <p>Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-card animate-on-scroll">
+                    <h2>Request a Report</h2>
+                    <p>Fill out the form below and we'll get back to you within 2 hours</p>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="fullName" name="fullName" required>
+                                <label for="fullName">Full Name *</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="organisation" name="organisation" required>
+                                <label for="organisation">Organisation *</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required>
+                                <label for="email">Email Address *</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" required>
+                                <label for="phone">Phone Number *</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="">Select Service Required *</option>
+                                <option value="personal-injury">Personal Injury Reports</option>
+                                <option value="medical-negligence">Medical Negligence Reports</option>
+                                <option value="occupational-health">Occupational Health Reports</option>
+                                <option value="psychological">Psychological Reports</option>
+                                <option value="expert-witness">Expert Witness Testimony</option>
+                                <option value="family-immigration">Family & Immigration Medical Reports</option>
+                                <option value="other">Other (Please specify in message)</option>
+                            </select>
+                            <label for="service">Service Required *</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="urgency" name="urgency" required>
+                                <option value="">Select Urgency *</option>
+                                <option value="urgent">Urgent (Within 24 hours)</option>
+                                <option value="standard">Standard (5-7 days)</option>
+                                <option value="flexible">Flexible (As agreed)</option>
+                            </select>
+                            <label for="urgency">Urgency *</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required placeholder="Please provide details about your case, including any specific requirements or deadlines..."></textarea>
+                            <label for="message">Case Details *</label>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">I agree to the <a href="#" class="privacy-link">Privacy Policy</a> and consent to the processing of my personal data *</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>Find Us</h2>
+                <p>Visit our office in central London or contact us for nationwide services</p>
+            </div>
+            <div class="map-container animate-on-scroll">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.1234567890123!2d-0.1278!3d51.5074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sLondon!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about our medico-legal reporting services</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>How quickly can you deliver a report?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our standard turnaround time is 5-7 days for most reports. Urgent reports can be delivered within 24-48 hours for an additional fee. We always discuss timelines with you before starting work.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>What information do you need to prepare a report?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We typically need medical records, witness statements, photographs of injuries (if applicable), and any relevant legal documents. We'll provide a detailed checklist when you contact us.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>Do you provide expert witness testimony?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, our qualified medical professionals can provide expert witness testimony in court. We have extensive experience in courtroom proceedings and cross-examination.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>Are your reports accepted by all UK courts?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, our reports are prepared by GMC-registered medical professionals and comply with all UK legal requirements. They are accepted by courts across England, Scotland, Wales, and Northern Ireland.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>What are your fees?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our fees vary depending on the complexity of the case and type of report required. Personal injury reports start from £450, while expert witness testimony starts from £800 per day. We provide detailed quotes before starting work.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content animate-on-scroll">
+                <h2>Ready to Get Started?</h2>
+                <p>Contact us today for a free consultation and quote for your medico-legal reporting needs</p>
+                <div class="cta-buttons">
+                    <a href="tel:+442079460958" class="btn btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Call Now
+                    </a>
+                    <a href="mailto:info@totalcarereports.co.uk" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        Email Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Total Care Reports</h3>
+                    <p>Professional medico-legal reporting services across the UK. Accurate, impartial, and delivered on time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Personal Injury Reports</a></li>
+                        <li><a href="services.html">Medical Negligence Reports</a></li>
+                        <li><a href="services.html">Occupational Health Reports</a></li>
+                        <li><a href="services.html">Psychological Reports</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>+44 20 7946 0958</p>
+                    <p>info@totalcarereports.co.uk</p>
+                    <p>123 Medical Street, London, EC1A 4HD</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Total Care Reports. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
